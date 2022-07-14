@@ -7,26 +7,22 @@ public class MyProgram {
 
     private static Gearbox gearbox = new Gearbox();
 
+    private static RPM minRpm =  new RPM((Long) characteristics[1]);
+    private static RPM maxRpm =  new RPM((Long) characteristics[0]);
+
     private static ExternalSystems externalSystems = new ExternalSystems();
 
     public static void main(String[] args) {
         // if revers, nautral, park, -> do nothing
 
-        if (externalSystems.getCurrentRpm() > (double) characteristics[0]) {
-            if (gearbox.getCurrentGear().equals(gearbox.getMaxDrive())) {
-                gearbox.setCurrentGear((int) gearbox.getCurrentGear() + 1);
-            }
-        }
-
-        if (externalSystems.getCurrentRpm() < (double) characteristics[1]) {
-            if ((int) gearbox.getCurrentGear() == 1) {
-                return;
-            }
-            gearbox.setCurrentGear((int) gearbox.getCurrentGear() - 1);
-        }
-
-
+        Integer maxDrive = gearbox.getMaxDrive();
+        Integer currentGear = (Integer) gearbox.getCurrentGear();
+        RPM currentRpm = new RPM((long) externalSystems.getCurrentRpm());
+        int calculation = new GearCalculator(maxDrive, minRpm, maxRpm).calc(currentRpm, currentGear);
+        gearbox.setCurrentGear(calculation);
     }
+
+
 
 
 }
