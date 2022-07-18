@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 
 public final class GearCalculatorTest {
 
-    private final GearCalculator gearCalculator = new GearCalculator(8, RPM.value(2000L), RPM.value(4000L));
+    private final GearCalculator gearCalculator = new GearCalculator(8, new RpmRange(new RPM(2000L), new RPM(4000L)));
 
     @Test
     public void whenRmpIsToBig_shouldShiftUp() {
         //when
-        int gear = gearCalculator.calc(RPM.value(5000L), 5);
+        int gear = gearCalculator.calc(RPM.value(5000L), new Gear(5)).getGear();
 
         //then
         Assertions.assertEquals(gear, 6);
@@ -19,7 +19,7 @@ public final class GearCalculatorTest {
     @Test
     public void whenRmpIsToLow_shouldShiftDown() {
         //when
-        int gear = gearCalculator.calc(RPM.value(1000L), 5);
+        int gear = gearCalculator.calc(RPM.value(1000L), new Gear(5)).getGear();
 
         //then
         Assertions.assertEquals(gear, 4);
@@ -28,7 +28,7 @@ public final class GearCalculatorTest {
     @Test
     public void whenRmpIsToLowButAlreadyOnFirstGear_shouldDoNothing() {
         //when
-        int gear = gearCalculator.calc(RPM.value(1000L), 1);
+        int gear = gearCalculator.calc(RPM.value(1000L), new Gear(1)).getGear();
 
         //then
         Assertions.assertEquals(gear, 1);
@@ -37,7 +37,7 @@ public final class GearCalculatorTest {
     @Test
     public void whenRmpIsToHighButAlreadyOnHighestGear_shouldDoNothing() {
         //when
-        int gear = gearCalculator.calc(RPM.value(6000L), 8);
+        int gear = gearCalculator.calc(RPM.value(6000L), new Gear(8)).getGear();
 
         //then
         Assertions.assertEquals(gear, 8);
@@ -46,7 +46,7 @@ public final class GearCalculatorTest {
     @Test
     public void whenRmpAreFineForCurrentGear_shouldDoNothing() {
         //when
-        int gear = gearCalculator.calc(RPM.value(3000L), 6);
+        int gear = gearCalculator.calc(RPM.value(3000L), new Gear(6)).getGear();
 
         //then
         Assertions.assertEquals(gear, 6);

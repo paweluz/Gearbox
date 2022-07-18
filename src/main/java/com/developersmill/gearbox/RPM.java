@@ -2,27 +2,26 @@ package com.developersmill.gearbox;
 
 import java.util.Objects;
 
-public class RPM implements Comparable<RPM>{
+public class RPM implements Comparable<RPM> {
     private final Long rpm;
 
     public RPM(Long rpm) {
-        if (rpm < 0){
+        if (rpm < 0) {
             throw new IllegalArgumentException("RPM must be positive number");
         }
         this.rpm = rpm;
     }
 
-    public static RPM value(Long value){
+    public static RPM value(Long value) {
         return new RPM(value);
     }
 
-    public boolean greaterThen(RPM rpm){
-        return compareTo(rpm) > 0;
+    public boolean isAbove(RpmRange rpmRange) {
+        return rpmRange.endLowerThan(this);
     }
 
-
-    public boolean lowerThen(RPM rpm){
-        return compareTo(rpm) < 0;
+    public boolean isBelow(RpmRange rpmRange) {
+        return rpmRange.startGreaterThan(this);
     }
 
     @Override

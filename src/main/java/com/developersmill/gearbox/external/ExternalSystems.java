@@ -1,13 +1,13 @@
-package com.developersmill.gearbox;
+package com.developersmill.gearbox.external;
 
-class ExternalSystems {
+public class ExternalSystems {
 
 
     private double currentRpm;
     private double angularSpeed = 150;
     private Lights lights = new Lights();
 
-    ExternalSystems() {
+    public ExternalSystems() {
 
     }
 
