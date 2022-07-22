@@ -1,4 +1,4 @@
-package com.developersmill.gearbox;
+package com.developersmill.gearbox.vo;
 
 public class GearRange {
 

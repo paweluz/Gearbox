@@ -1,5 +1,10 @@
 package com.developersmill.gearbox;
 
+import com.developersmill.gearbox.vo.Gear;
+import com.developersmill.gearbox.vo.GearRange;
+import com.developersmill.gearbox.vo.RPM;
+import com.developersmill.gearbox.vo.RpmRange;
+
 public class GearCalculator {
     private final GearRange gearRange;
     private final RpmRange optimalRange;

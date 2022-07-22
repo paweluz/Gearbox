@@ -1,5 +1,6 @@
 package com.developersmill.gearbox;
 
+import com.developersmill.gearbox.vo.Gear;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

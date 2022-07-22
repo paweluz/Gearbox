@@ -1,5 +1,9 @@
 package com.developersmill.gearbox;
 
+import com.developersmill.gearbox.vo.Gear;
+import com.developersmill.gearbox.vo.GearRange;
+import com.developersmill.gearbox.vo.RPM;
+import com.developersmill.gearbox.vo.RpmRange;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
