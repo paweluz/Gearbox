@@ -13,6 +13,14 @@ public class GearRange {
         this.max = max;
     }
 
+    public Gear next(Gear gear){
+        return trim(gear.next());
+    }
+
+    public Gear previous(Gear gear){
+        return trim(gear.previous());
+    }
+
     public Gear trim(Gear gear) {
         if (gear.greaterThen(max)) {
             return max;

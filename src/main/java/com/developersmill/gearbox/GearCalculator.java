@@ -9,17 +9,12 @@ public class GearCalculator {
         this.optimalRange = optimalRange;
     }
 
-    public Gear calculate(RPM currentRpm, Gear currentGear){
-        Gear gear = calc(currentRpm, currentGear);
-        return gearRange.trim(gear);
-    }
-
-    private Gear calc(RPM currentRpm, Gear currentGear) {
+    public Gear calculate(RPM currentRpm, Gear currentGear) {
         if (currentRpm.isAbove(optimalRange)){
-            return currentGear.next();
+            return gearRange.next(currentGear);
         }
         if (currentRpm.isBelow(optimalRange)) {
-            return currentGear.previous();
+            return gearRange.previous(currentGear);
         }
         return currentGear;
     }
