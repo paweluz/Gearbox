@@ -19,8 +19,16 @@ public class Gear implements Comparable<Integer> {
         return new Gear(value - 1);
     }
 
-    public int getGear() {
+    public Integer getGear() {
         return value;
+    }
+
+    public boolean greaterThen(Gear g) {
+        return value.compareTo(g.getGear()) > 0;
+    }
+
+    public boolean lessOrEquals(Gear g) {
+        return value.compareTo(g.getGear()) <= 0;
     }
 
     @Override
@@ -41,5 +49,12 @@ public class Gear implements Comparable<Integer> {
     @Override
     public int hashCode() {
         return value != null ? value.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Gear{" +
+                "value=" + value +
+                '}';
     }
 }

@@ -1,26 +1,24 @@
 package com.developersmill.gearbox;
 
 public class GearCalculator {
-    private final Integer maxDrive;
+    private final GearRange gearRange;
     private final RpmRange optimalRange;
 
-    public GearCalculator(int maxDrive, RpmRange optimalRange) {
-        this.maxDrive = maxDrive;
+    public GearCalculator(GearRange gearRange, RpmRange optimalRange) {
+        this.gearRange = gearRange;
         this.optimalRange = optimalRange;
     }
 
-    public Gear calc(RPM currentRpm, Gear currentGear) {
+    public Gear calculate(RPM currentRpm, Gear currentGear){
+        Gear gear = calc(currentRpm, currentGear);
+        return gearRange.trim(gear);
+    }
+
+    private Gear calc(RPM currentRpm, Gear currentGear) {
         if (currentRpm.isAbove(optimalRange)){
-            if (currentGear.equals(new Gear(maxDrive))) {
-                return currentGear;
-            }
             return currentGear.next();
         }
-
         if (currentRpm.isBelow(optimalRange)) {
-            if (currentGear.equals(new Gear(1))) {
-                return currentGear;
-            }
             return currentGear.previous();
         }
         return currentGear;

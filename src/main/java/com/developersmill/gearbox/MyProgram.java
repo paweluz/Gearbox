@@ -17,11 +17,10 @@ public class MyProgram {
 
     public static void main(String[] args) {
         // if revers, nautral, park, -> do nothing
-
-        Integer maxDrive = gearbox.getMaxDrive();
+        GearRange gearRange = new GearRange(new Gear(1), new Gear(gearbox.getMaxDrive()));
         Gear currentGear = new Gear((Integer) gearbox.getCurrentGear());
         RPM currentRpm = new RPM((long) externalSystems.getCurrentRpm());
-        int calculation = new GearCalculator(maxDrive, new RpmRange(minRpm, maxRpm)).calc(currentRpm, currentGear).getGear();
+        int calculation = new GearCalculator(gearRange, new RpmRange(minRpm, maxRpm)).calculate(currentRpm, currentGear).getGear();
         gearbox.setCurrentGear(calculation);
     }
 
