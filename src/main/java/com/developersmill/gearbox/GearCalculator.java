@@ -15,9 +15,10 @@ public class GearCalculator {
     }
 
     public Gear calculate(RPM currentRpm, Gear currentGear) {
-        if (currentRpm.isAbove(optimalRange)){
+        if (currentRpm.isAbove(optimalRange)) {
             return gearRange.next(currentGear);
         }
+
         if (currentRpm.isBelow(optimalRange)) {
             return gearRange.previous(currentGear);
         }
