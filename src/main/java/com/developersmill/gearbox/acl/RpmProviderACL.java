@@ -12,6 +12,6 @@ public class RpmProviderACL {
     }
 
     public RPM getCurrentRPM(){
-        return RPM.value((long) externalSystems.getCurrentRpm());
+        return RPM.value((Double) externalSystems.getCurrentRpm());
     }
 }

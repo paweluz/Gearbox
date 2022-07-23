@@ -3,16 +3,16 @@ package com.developersmill.gearbox.vo;
 import java.util.Objects;
 
 public class RPM implements Comparable<RPM> {
-    private final Long rpm;
+    private final Double rpm;
 
-    public RPM(Long rpm) {
+    public RPM(Double rpm) {
         if (rpm < 0) {
             throw new IllegalArgumentException("RPM must be positive number");
         }
         this.rpm = rpm;
     }
 
-    public static RPM value(Long value) {
+    public static RPM value(Double value) {
         return new RPM(value);
     }
 

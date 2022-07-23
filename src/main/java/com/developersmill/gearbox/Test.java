@@ -15,7 +15,7 @@ public class Test {
 
     private static CharacteristicsACL characteristics = new CharacteristicsACL();
 
-    private static GearCalculator gearCalculator = new GearCalculator(new GearRange(new Gear(1), new Gear(8)), characteristics.getOptionalRange());
+    private static GearCalculator gearCalculator = new GearCalculator(new GearRange(new Gear(1), new Gear(8)), characteristics.getOptimalEcoRange());
 
     public static void main(String[] args) {
         // if revers, nautral, park, -> do nothing
