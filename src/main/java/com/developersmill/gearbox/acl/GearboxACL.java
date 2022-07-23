@@ -1,7 +1,7 @@
 package com.developersmill.gearbox.acl;
 
-import com.developersmill.gearbox.vo.Gear;
 import com.developersmill.gearbox.external.Gearbox;
+import com.developersmill.gearbox.vo.Gear;
 
 public class GearboxACL {
 
@@ -15,8 +15,16 @@ public class GearboxACL {
         return new Gear((Integer) gearbox.getCurrentGear());
     }
 
-    public void changeGear(Gear gear){
+    public void changeGear(Gear gear) {
         gearbox.setCurrentGear(gear.getGear());
+    }
+
+    public Gear getMaxGear() {
+        return new Gear(gearbox.getMaxDrive());
+    }
+
+    public Gear getFirstGear() {
+        return new Gear(1);
     }
 
 
